@@ -2,15 +2,30 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>OnlineStoreNG</title>
+  <title>EverMusic</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!--Import materialize.css-->
+
 </head>
 <body>
   
-  <app-navbar></app-navbar>
-  <app-hero></app-hero>
   <app-root></app-root>
+  <!-- Modal Structure -->
+  <div id="messageModal" class="modal">
+    <div class="modal-content">
+      <h4>Platform Message</h4>
+      <p id="messageText"></p>
+    </div>
+    <div class="modal-footer">
+      <a class="modal-close waves-effect waves-green btn-flat">CLOSE</a>
+    </div>
+  </div>
+  
+
 </body>
 </html>

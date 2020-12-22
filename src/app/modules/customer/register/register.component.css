@@ -1,0 +1,14 @@
+body{
+    background-color: #525252;
+}
+.form-container {
+   width:40vw;
+  height:auto;
+  margin:0 auto;
+}
+.card-title {
+  text-align:center;
+}
+.warning-validator strong{
+  color: red;
+}

@@ -2,3 +2,9 @@ h2{
     text-align: center;
     color: red;
 }
+a {
+    margin-left: 50px;
+}
+ul{
+    margin-right: 50px;
+}
