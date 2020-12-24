@@ -3,5 +3,7 @@ export class UserModel{
     username!: String;
     password?: String; 
     customerId?: String;
-    role?: String;  
+    role?: number;
+    token?: String;
+    isLogged?: boolean = false;  
 }

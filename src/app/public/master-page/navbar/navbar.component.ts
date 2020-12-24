@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { SecurityService } from 'src/app/services/security.service';
 
 @Component({
   selector: 'app-navbar',
@@ -6,10 +8,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  
+  isLogged?: Boolean = false;
+  role: number=0;
+  subscription: Subscription = new Subscription;
 
-  constructor() { }
+  constructor(private service: SecurityService) { }
 
   ngOnInit(): void {
+    this.subscription = this.service.getUserData().subscribe(data => {
+      this.isLogged = data.isLogged;
+    });
   }
 
 }

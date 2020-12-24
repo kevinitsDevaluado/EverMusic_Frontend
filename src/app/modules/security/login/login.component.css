@@ -2,6 +2,7 @@
 
 #login-page {
    width: 500px;
+   padding-top: 40px;
 }
 
 .card {
@@ -13,4 +14,11 @@
      -ms-transform: translate(-50%, -50%);
      -o-transform: translate(-50%, -50%);
      transform: translate(-50%, -50%); 
+}
+h4{
+   text-align: center;
+}
+p{
+   text-align: center;
+   font-size: 19px;
 }
