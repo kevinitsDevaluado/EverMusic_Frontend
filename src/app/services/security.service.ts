@@ -64,6 +64,7 @@ export class SecurityService {
       };
       localStorage.setItem('session',JSON.stringify(data));
       this.setUserData(data);
+      console.log(data);
       return true;
     }
   }
