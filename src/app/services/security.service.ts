@@ -59,8 +59,8 @@ export class SecurityService {
         customerId : sessionData.data.customerId,
         username : sessionData.data.username,
         role : sessionData.data.role,
-        token : sessionData.data.token,
-        isLogged: true
+        token : sessionData.token,
+        isLogged: true,
       };
       localStorage.setItem('session',JSON.stringify(data));
       this.setUserData(data);
@@ -73,7 +73,12 @@ export class SecurityService {
    */
   getSessionData(){
     let currentSession = localStorage.getItem('session');
-    return currentSession;
+    return currentSession as any;
+  }
+
+  getToken():String{
+     let currentSession = JSON.parse(this.getSessionData());
+     return currentSession.token;
   }
   /**
    * Close session // cerrar sesion

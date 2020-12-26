@@ -7,3 +7,12 @@ function showMessage(message) {
   
 }
 //alert("Que onda malditos");
+
+function showRemoveConfirmationWindows(message) {
+  //alert(message);
+  
+  let elem = document.querySelector('#RemoveConfirmationModal');
+  let instance = M.Modal.init(elem, {});
+  instance.open();
+  
+}
