@@ -7,14 +7,15 @@ import { LogoutComponent } from './logout/logout.component';
 import { PasswordResetComponent } from './password-reset/password-reset.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-
+import { NgxSpinnerModule } from "ngx-spinner";
 @NgModule({
   declarations: [LoginComponent, LogoutComponent, PasswordResetComponent, ChangePasswordComponent],
   imports: [
     CommonModule,
     SecurityRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    NgxSpinnerModule
   ]
 })
 export class SecurityModule { }

@@ -1,1 +1,67 @@
-<p>category-edition works!</p>
+<div class="form-container">
+    <div class="card-panel">
+      <div class="card-content blue-grey-text card-header">
+        <span class="card-title">
+           <h3>
+              <strong>Editar Categoría</strong>        
+          </h3>
+         
+        </span>
+
+            <div>
+                <div class="row">
+                    <form [formGroup]="fgValidator" class="col s12">
+                        <input type="hidden" formControlName="id">
+                        <div class="input-field col s6">
+                            <i class="fa fa-barcode prefix" aria-hidden="true"></i>
+                        <input
+                            id="code"
+                            name="code"
+                            type="text"
+                            class="validate"
+                            formControlName="code"
+                        />
+                        <label for="code">Code</label>
+                        <div class="warning-validator" *ngIf="fgv.code.errors && (fgv.code.dirty || fgv.code.touched)"> 
+                            <strong *ngIf="fgv.code.errors.required">
+                                This field is requerid
+                            </strong>
+                            
+                            <strong *ngIf="fgv.code.errors.minlength">
+                            This field must be at least {{codeMinLength}} long.
+                        </strong>
+                        </div>
+                        </div>
+                        
+                        <div class="input-field col s6">
+                        <i class="material-icons dp48 prefix" aria-hidden="true">call_to_action</i>
+                        <input
+                            id="name"
+                            name="name"
+                            type="text"
+                            class="validate"
+                            formControlName="name"
+                        />
+                        <label for="name">Nombre de la categoría</label>
+                        <div class="warning-validator" *ngIf="fgv.name.errors && (fgv.name.dirty || fgv.name.touched)"> 
+                            <strong *ngIf="fgv.name.errors.required">
+                                This field is requerid
+                            </strong>
+                            
+                            <strong *ngIf="fgv.name.errors.minlength">
+                            This field must be at least {{nameMinLength}} long.
+                        </strong>
+                        </div>
+                        </div>
+                        
+                        <div style="text-align: right">
+                            <button (click)="EditNewRecordFn()" type="button" class="btn btn-success"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</button>
+                            &nbsp; 
+                            <a routerLink = "/parameters/category-list" type="button" class="btn btn-danger"><i class="fa fa-window-close" aria-hidden="true"></i> Cancelar</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -6,6 +6,7 @@ import { UserModel } from 'src/app/models/user.models';
 import { CustomerService } from 'src/app/services/customer.service';
 import { SecurityService } from 'src/app/services/security.service';
 import * as CryptoJS from 'crypto-js'
+import { NgxSpinnerService } from 'ngx-spinner';
 declare const showMessage: any;
 declare const initSidenav: any;
 
@@ -25,11 +26,13 @@ export class LoginComponent implements OnInit {
   constructor(
      private fb: FormBuilder,
      private service: SecurityService, 
-     private router: Router
+     private router: Router,
+     private spinner: NgxSpinnerService
      ) { }
   //PERMISOS DE MI FORMULARIO
   ngOnInit(): void {
     this.FormBuilding();
+    this.spinner.show();
   }
   //validaciones de campos -- fields
   FormBuilding(){
@@ -52,8 +55,13 @@ export class LoginComponent implements OnInit {
           this.service.saveSessionData(data);
           //sometingh else
           //initSidenav();
-          showMessage('Bienvenido..!!');
+          //showMessage('Bienvenido..!!');
           this.router.navigate(['/home']);
+          setTimeout(() => {
+            /** spinner ends after 5 seconds */
+            this.spinner.hide();
+          }, 1000);
+          
         },
         error => {
           showMessage('Invalid data.');

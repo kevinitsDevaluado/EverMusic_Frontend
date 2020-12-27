@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
+
 
 @Component({
   selector: 'app-default',
@@ -10,6 +12,8 @@ export class DefaultComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
+  
   }
 
 }

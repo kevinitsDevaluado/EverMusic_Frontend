@@ -11,6 +11,7 @@ import { BrandEditionComponent } from './brand/brand-edition/brand-edition.compo
 import { BrandListComponent } from './brand/brand-list/brand-list.component';
 import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
 import { NgxSpinnerModule } from "ngx-spinner";
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -20,7 +21,9 @@ import { NgxSpinnerModule } from "ngx-spinner";
     CommonModule,
     ParametersRoutingModule,
     NgxPaginationModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class ParametersModule { }

@@ -22,6 +22,10 @@ export class CategoryService {
   getAllRecords(): Observable<CategoryModel[]> {
     return this.http.get<CategoryModel[]>(`${this.entity}`);
   }
+
+  getRecordById(id :String): Observable<CategoryModel> {
+    return this.http.get<CategoryModel>(`${this.entity}/${id}`);
+  }
   /**
    * 
    * @param record SAVE COTEGORY
@@ -40,7 +44,8 @@ export class CategoryService {
   EditRecord(record: CategoryModel): Observable<CategoryModel>{
     return this.http.put<CategoryModel>(`${this.entity}`,record,{
       headers: new HttpHeaders({
-        Authorization:`Bearer ${this.token}`
+        'Content-Type': 'application/json',
+        'Authorization':`Bearer ${this.token}`
       })
     });
   }
