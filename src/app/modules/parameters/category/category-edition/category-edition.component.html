@@ -7,11 +7,11 @@
           </h3>
          
         </span>
-
             <div>
                 <div class="row">
-                    <form [formGroup]="fgValidator" class="col s12">
+                    <form class="col s12" [formGroup]="fgValidator">
                         <input type="hidden" formControlName="id">
+                        
                         <div class="input-field col s6">
                             <i class="fa fa-barcode prefix" aria-hidden="true"></i>
                         <input
@@ -21,7 +21,7 @@
                             class="validate"
                             formControlName="code"
                         />
-                        <label for="code">Code</label>
+                        <label for="code" class="active"> Code</label>
                         <div class="warning-validator" *ngIf="fgv.code.errors && (fgv.code.dirty || fgv.code.touched)"> 
                             <strong *ngIf="fgv.code.errors.required">
                                 This field is requerid
@@ -42,7 +42,7 @@
                             class="validate"
                             formControlName="name"
                         />
-                        <label for="name">Nombre de la categoría</label>
+                        <label for="name" class="active">Name</label>
                         <div class="warning-validator" *ngIf="fgv.name.errors && (fgv.name.dirty || fgv.name.touched)"> 
                             <strong *ngIf="fgv.name.errors.required">
                                 This field is requerid

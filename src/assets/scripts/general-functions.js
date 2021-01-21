@@ -16,3 +16,18 @@ function showRemoveConfirmationWindows(message) {
   instance.open();
   
 }
+function showMessageB(message) {
+  //alert(message);
+ 
+  $('#staticBackdrop').modal({
+    show: true
+  });
+  
+}
+
+function closeModal() {
+  let elem = document.querySelectorAll('.modal');
+  let instance = M.Modal.init(elem, {});
+  instance.close();
+  
+}

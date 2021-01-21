@@ -1,7 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { UserModel } from '../models/user.models';
+import { ChangePasswordModel } from '../models/security/change-password.model';
+import { PasswordResetModel } from '../models/security/password-reset.model';
+import { UserModel } from '../models/security/user.models';
 
 @Injectable({
   providedIn: 'root'
@@ -46,6 +48,27 @@ export class SecurityService {
   });
   }
   /**
+   * 
+   * @param user RESETEAR LA CONTRASEÑA
+   */
+  PasswordReset(data: PasswordResetModel): Observable<UserModel> {
+    return this.http.post<any>(`password-reset`,data,{
+      headers : new HttpHeaders({})
+  });
+  }
+  /**
+   * 
+   * @param data CAMBIAR LA CONTRASEÑA
+   * @returns
+   */
+  ChangePassword(data: ChangePasswordModel): Observable<UserModel> {
+    return this.http.post<any>(`change-password`,data,{
+      headers : new HttpHeaders({
+        Authorization:`Bearer ${this.getToken()}`
+      })
+  });
+  }
+  /**
    * save session
    * @param sessionData user data and token 
    */
@@ -76,15 +99,30 @@ export class SecurityService {
     return currentSession as any;
   }
 
+  sessionExist(): Boolean{
+    let currentSession = this.getSessionData();
+    return (currentSession) ? true : false;
+    
+  }
+
+  VerifyRoleInSession(roleId): Boolean {
+    let currentSession = JSON.parse(this.getSessionData());
+    return (currentSession.role == roleId);
+  }
+
   getToken():String{
      let currentSession = JSON.parse(this.getSessionData());
      return currentSession.token;
   }
+  getUserId():String{
+    let currentSession = JSON.parse(this.getSessionData());
+    return currentSession.id;
+ }
   /**
    * Close session // cerrar sesion
    */
   logout(){
-    localStorage.removeItem('session');
+    localStorage.removeItem('session');   
     this.setUserData(new UserModel());
   }
 }

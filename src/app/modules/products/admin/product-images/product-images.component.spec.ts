@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CategoryRemoveComponent } from './category-remove.component';
+import { ProductImagesComponent } from './product-images.component';
 
-describe('CategoryRemoveComponent', () => {
-  let component: CategoryRemoveComponent;
-  let fixture: ComponentFixture<CategoryRemoveComponent>;
+describe('ProductImagesComponent', () => {
+  let component: ProductImagesComponent;
+  let fixture: ComponentFixture<ProductImagesComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CategoryRemoveComponent ]
+      declarations: [ ProductImagesComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CategoryRemoveComponent);
+    fixture = TestBed.createComponent(ProductImagesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

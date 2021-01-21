@@ -19,13 +19,12 @@ export class CategoryEditionComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-     private service:CategoryService, 
-     private router: Router,
-     private route: ActivatedRoute
-     
-     ) { 
+    private service:CategoryService, 
+    private router: Router,
+    private route: ActivatedRoute
+    ) { 
       this.id = this.route.snapshot.params["id"];
-      console.log(this.id);
+      console.log("Id de get: " + this.id);
      }
   //PERMISOS DE MI FORMULARIO
   ngOnInit(): void {
@@ -46,7 +45,6 @@ export class CategoryEditionComponent implements OnInit {
     if(this.id){
       this.service.getRecordById(this.id).subscribe(
         data => {
-          console.log(data);
           this.fgv.id.setValue(data.id);
           this.fgv.code.setValue(data.code);
           this.fgv.name.setValue(data.name);
@@ -60,14 +58,16 @@ export class CategoryEditionComponent implements OnInit {
       this.router.navigate(['/parameters/category-list']);
     }
   }
+
   EditNewRecordFn(){
     if (this.fgValidator.invalid) {
       showMessage("Invalid form");
     }else{
       let model = this.getCustomerData();
-      this.service.saveNewRecord(model).subscribe(
+      this.service.EditRecord(model).subscribe(
         data => {
-          showMessage("Categoria registrada Correctamente.!!");
+          console.log(data);
+          showMessage("Categoria guardada Correctamente.!!");
           this.router.navigate(['/parameters/category-list']);
         },
         error => {
@@ -77,8 +77,10 @@ export class CategoryEditionComponent implements OnInit {
     }
   }
 
+
   getCustomerData(): CategoryModel{
     let model = new CategoryModel();
+    model.id = this.fgv.id.value;
     model.code = this.fgv.code.value;
     model.name = this.fgv.name.value;
     return model;

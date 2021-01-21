@@ -1,1 +1,55 @@
-<p>brand-list works!</p>
+<a type="button" class="btn btn-success" id="agregar" routerLink= "/parameters/brand-creation" ><i class="fa fa-plus-square-o fa-6" aria-hidden="true"></i> New Brand</a>
+
+<table class="table margin">
+    <thead class="table-dark">
+        <tr>
+            <td style="width: 20%;">
+                ID
+            </td>
+            <td style="width: 10%;">
+                Code
+            </td>
+            <td style="width: 50%;">
+                Name
+            </td>   
+            <td style="width: 20%; text-align:center;">
+                Option
+            </td>
+        </tr>
+        
+    </thead>
+    <tbody>
+        <tr *ngFor="let r of recordList | paginate: { itemsPerPage: itemCount, currentPage: page }">
+            <td>
+                {{r.id}}
+            </td>
+            <td>
+                {{r.code}}
+            </td>
+            <td>
+                {{r.name}}
+            </td>
+            <td style="text-align:center;">
+                <a type="button" class="btn btn-info" id="botones" routerLink= "/parameters/brand-edition/{{r.id}}" routerLinkActive ="router-link-active"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                <button (click)="RemoveConfirmation(r.id)" type="button" class="btn btn-danger" id="botones" ><i class="fa fa-trash" aria-hidden="true"></i></button>          
+            </td>
+
+        </tr>
+    </tbody>
+</table>
+<div class="botonesPagination">
+    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    <ngx-spinner></ngx-spinner>
+</div>
+ <!-- Modal Structure -->
+ <div id="RemoveConfirmationModal" class="modal"    >
+    <div class="modal-content">
+      <h4> MENSAJE DE CONFIRMACIÓN </h4>
+      <p> Estas seguro que deseas eliminar este elemento? </p>
+    </div>
+    <div class="modal-footer">
+      <button (click)="RemoveRecord()" type="button" class="btn btn-danger" id="botones" ><i class="fa fa-trash" aria-hidden="true"></i></button>          
+      <a class="modal-close  waves-effect waves-green btn-flat">CERRAR</a>
+    </div>
+</div>
+  

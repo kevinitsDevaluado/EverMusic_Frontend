@@ -1,33 +1,78 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>EverMusic</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+  <head>
+    <meta charset="utf-8" />
+    <title>EverMusic</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="css/materialize.min.css"
+      media="screen,projection"
+    />
 
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<!--Import materialize.css-->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <!--Import materialize.css-->
+  </head>
+  <body>
+    <app-root></app-root>
 
-</head>
-<body>
-  
-
-
-  <app-root></app-root>
-  <!-- Modal Structure -->
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="staticBackdrop"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Alerta</h5>
+            
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Structure -->
+      <!-- Modal Structure -->
   <div id="messageModal" class="modal">
     <div class="modal-content">
       <h4>Platform Message</h4>
       <p id="messageText"></p>
     </div>
     <div class="modal-footer">
-      <a class="modal-close waves-effect waves-green btn-flat">CLOSE</a>
+      <a class="modal-close waves-effect waves-green btn-flat">Close</a>
     </div>
   </div>
-  <!--ESTE SCRIPT ES PARA LOS ICONOS FONT-AWESOME-->
-  <script src="https://kit.fontawesome.com/3e5307ce58.js" crossorigin="anonymous"></script>
-</body>
+
+    <!--ESTE SCRIPT ES PARA LOS ICONOS FONT-AWESOME-->
+    <script
+      src="https://kit.fontawesome.com/3e5307ce58.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>

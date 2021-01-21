@@ -42,10 +42,9 @@ export class CategoryService {
    * @param record EDIT CATEGORY
    */
   EditRecord(record: CategoryModel): Observable<CategoryModel>{
-    return this.http.put<CategoryModel>(`${this.entity}`,record,{
+    return this.http.put<CategoryModel>(`${this.entity}/${record.id}`, record, {
       headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization':`Bearer ${this.token}`
+        Authorization: `Bearer ${this.token}`
       })
     });
   }
@@ -54,10 +53,11 @@ export class CategoryService {
    * @param recordId DELETE RECORD CATEGORY
    */
   DeleteRecord(recordId: String): Observable<any>{
-    return this.http.put<CategoryModel>(`${this.entity}/${recordId}`,{
+    return this.http.delete<CategoryModel>(`${this.entity}/${recordId}`,{
       headers: new HttpHeaders({
         Authorization:`Bearer ${this.token}`
       })
     });
   }
+
 }

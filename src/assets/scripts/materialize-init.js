@@ -8,4 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     instances.open();
   });
 
-  
+function initSelect(){
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems, {});
+}

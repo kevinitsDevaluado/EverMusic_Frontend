@@ -1,0 +1,171 @@
+<div class="form-container">
+    <div class="card-panel">
+      <div class="card-content blue-grey-text card-header">
+        <span class="card-title">
+           <h3>
+              <strong>Editar Producto</strong>        
+          </h3>
+         
+        </span>
+
+            <div>
+                <div class="row">
+                    <form [formGroup]="fgValidator" class="col s12">
+                        <input type="hidden" formControlName="id">
+                        <!--ID-->
+                        <div class="input-field col s4">
+                            <i class="fa fa-barcode prefix" aria-hidden="true"></i>
+                        <input
+                            id="code"
+                            name="code"
+                            type="text"
+                            class="validate"
+                            formControlName="code"
+                        />
+                        <label for="code" class="active">Code</label>
+                        <div class="warning-validator" *ngIf="fgv.code.errors && (fgv.code.dirty || fgv.code.touched)"> 
+                            <strong *ngIf="fgv.code.errors.required">
+                                This field is requerid
+                            </strong>
+                            
+                            <strong *ngIf="fgv.code.errors.minlength">
+                            This field must be at least {{codeMinLength}} long.
+                        </strong>
+                        </div>
+                        </div>
+                        
+                        <!--NAME-->
+                        <div class="input-field col s8">
+                        <i class="material-icons dp48 prefix" aria-hidden="true">call_to_action</i>
+                        <input
+                            id="name"
+                            name="name"
+                            type="text"
+                            class="validate"
+                            formControlName="name"
+                        />
+                        <label class="active" for="name">Nombre del Producto</label>
+                        <div class="warning-validator" *ngIf="fgv.name.errors && (fgv.name.dirty || fgv.name.touched)"> 
+                            <strong *ngIf="fgv.name.errors.required">
+                                This field is requerid
+                            </strong>
+                            
+                            <strong *ngIf="fgv.name.errors.minlength">
+                            This field must be at least {{nameMinLength}} long.
+                        </strong>
+                        </div>
+                        </div>
+                        <!--PRICE-->
+                        <div class="input-field col s4">
+                            <i class="material-icons dp48 prefix" aria-hidden="true">call_to_action</i>
+                            <input
+                                id="price"
+                                name="price"
+                                type="text"
+                                class="validate"
+                                formControlName="price"
+                            />
+                            <label for="price" class="active">Precio del Producto</label>
+                            <div class="warning-validator" *ngIf="fgv.price.errors && (fgv.price.dirty || fgv.price.touched)"> 
+                                <strong *ngIf="fgv.price.errors.required">
+                                    This field is requerid
+                                </strong>
+                                
+                                <strong *ngIf="fgv.price.errors.minlength">
+                                This field must be at least {{nameMinLength}} long.
+                            </strong>
+                            </div>
+                            </div>
+                          <!--stock-->
+                        <div class="input-field col s4">
+                            <i class="material-icons dp48 prefix" aria-hidden="true">call_to_action</i>
+                            <input
+                                id="stock"
+                                name="stock"
+                                type="text"
+                                class="validate"
+                                formControlName="stock"
+                            />
+                            <label for="stock" class="active">Stock</label>
+                            <div class="warning-validator" *ngIf="fgv.stock.errors && (fgv.stock.dirty || fgv.stock.touched)"> 
+                                <strong *ngIf="fgv.stock.errors.required">
+                                    This field is requerid
+                                </strong>
+                                
+                                <strong *ngIf="fgv.stock.errors.minlength">
+                                This field must be at least {{nameMinLength}} long.
+                            </strong>
+                            </div>
+                        </div>
+                           <!--rate-->
+                           <div class="input-field col s4">
+                            <i class="material-icons dp48 prefix" aria-hidden="true">call_to_action</i>
+                            <input
+                                id="rate"
+                                name="rate"
+                                type="text"
+                                class="validate"
+                                formControlName="rate"
+                            />
+                            <label for="rate" class="active">Valoración</label>
+                            <div class="warning-validator" *ngIf="fgv.rate.errors && (fgv.rate.dirty || fgv.rate.touched)"> 
+                                <strong *ngIf="fgv.rate.errors.required">
+                                    This field is requerid
+                                </strong>
+                                
+                                <strong *ngIf="fgv.rate.errors.minlength">
+                                This field must be at least {{nameMinLength}} long.
+                            </strong>
+                            </div>
+                        </div>
+                         <!--DESCRIPCION-->
+                        <div class="input-field col s12">
+                            <i class="material-icons dp48 prefix" aria-hidden="true">call_to_action</i>
+                            <input
+                                id="description"
+                                name="description"
+                                type="text"
+                                class="validate materialize-textarea"
+                                formControlName="description"
+                            />
+                            <label for="description" class="active">Descripción</label>
+                            <div class="warning-validator" *ngIf="fgv.description.errors && (fgv.description.dirty || fgv.description.touched)"> 
+                                <strong *ngIf="fgv.description.errors.required">
+                                    This field is requerid
+                                </strong>
+                                
+                                <strong *ngIf="fgv.description.errors.minlength">
+                                This field must be at least {{nameMinLength}} long.
+                            </strong>
+                            </div>
+                        </div>
+                      
+                      
+                        <!--Category-->
+                        <div class="input-field col s12"  >
+                            <select class="browser-default"  formControlName="categoryId">
+                              <option  *ngFor="let category of categoryList" value="{{category.id}}">{{category.name}}</option>
+                            </select>
+                            <label class="active">Categoria</label>
+                        </div>
+                        <!--Marca-->
+                        <div class="input-field col s12">
+                            <select  class="browser-default"  formControlName="brandId">
+                              <option *ngFor="let brand of brandList" value="{{brand.id}}">{{brand.name}}</option>
+                            </select>
+                            <label class="active">Marca</label>
+                        </div>
+                        
+                        <div class="input-field col s12">
+                            <div style="text-align: right">
+                                <button (click)="editRecordFn()" type="button" class="btn btn-success"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</button>
+                                &nbsp; 
+                                <a routerLink = "/products/product-list" type="button" class="btn btn-danger"><i class="fa fa-window-close" aria-hidden="true"></i> Cancelar</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

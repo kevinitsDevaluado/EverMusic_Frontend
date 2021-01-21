@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FormsConfig } from 'src/app/config/forms-config';
-import { UserModel } from 'src/app/models/user.models';
+import { UserModel } from 'src/app/models/security/user.models';
 import { CustomerService } from 'src/app/services/customer.service';
 import { SecurityService } from 'src/app/services/security.service';
 import * as CryptoJS from 'crypto-js'
@@ -64,7 +64,7 @@ export class LoginComponent implements OnInit {
           
         },
         error => {
-          showMessage('Invalid data.');
+          showMessage('Usuario o Contraseña Incorrecta');
         }
       );
     }

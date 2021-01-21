@@ -16,6 +16,24 @@
         "secure": false,
         "logLevel":"debug",
         "changeOrigin": true
+    },
+    "/brand/*":{
+        "target":"http://localhost:3000", 
+        "secure": false,
+        "logLevel":"debug",
+        "changeOrigin": true
+    },
+    "/password-reset/*":{
+        "target":"http://localhost:3000", 
+        "secure": false,
+        "logLevel":"debug",
+        "changeOrigin": true
+    },
+    "/change-password/*":{
+        "target":"http://localhost:3000", 
+        "secure": false,
+        "logLevel":"debug",
+        "changeOrigin": true
     }
 }
 

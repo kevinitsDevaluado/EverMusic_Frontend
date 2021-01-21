@@ -4,6 +4,7 @@ import { BrandCreationComponent } from './brand/brand-creation/brand-creation.co
 import { BrandEditionComponent } from './brand/brand-edition/brand-edition.component';
 import { BrandListComponent } from './brand/brand-list/brand-list.component';
 import { CategoryCreationComponent } from './category/category-creation/category-creation.component';
+import { CategoryEditionComponent } from './category/category-edition/category-edition.component';
 import { CategoryListComponent } from './category/category-list/category-list.component';
 
 const routes: Routes = [
@@ -17,12 +18,9 @@ const routes: Routes = [
   },
   {
     path:'category-edition/:id',
-    component: CategoryCreationComponent
+    component: CategoryEditionComponent
   },
-  {
-    path:'category-remove',
-    component: CategoryCreationComponent
-  },
+
   {
     path:'brand-list',
     component: BrandListComponent
@@ -32,7 +30,7 @@ const routes: Routes = [
     component: BrandCreationComponent
   },
   {
-    path:'brand-edition',
+    path:'brand-edition/:id',
     component: BrandEditionComponent
   },
 ];

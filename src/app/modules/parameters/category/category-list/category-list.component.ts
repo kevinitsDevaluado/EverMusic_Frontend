@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { FormsConfig } from 'src/app/config/forms-config';
 
@@ -7,6 +8,7 @@ import { CategoryService } from 'src/app/services/parameters/category.service';
 
 declare const showMessage: any;
 declare const showRemoveConfirmationWindows: any;
+declare const closeModal: any;
 @Component({
   selector: 'app-category-list',
   templateUrl: './category-list.component.html',
@@ -16,7 +18,13 @@ export class CategoryListComponent implements OnInit {
   page: number = 1;
   itemCount: number = FormsConfig.ITEMS_PER_PAGE;
   recordList: CategoryModel[] = [];
-  constructor(private service: CategoryService,private spinner: NgxSpinnerService) {
+  idToRemove: String = '';
+    constructor(
+      private service: CategoryService,
+      private spinner: NgxSpinnerService,
+      private router: Router,
+       
+      ) {
 
    }
 
@@ -42,8 +50,26 @@ export class CategoryListComponent implements OnInit {
       }
     );
   }
-  RemoveConfirmation(){
+  RemoveConfirmation(id){
+    this.idToRemove = id;
     showRemoveConfirmationWindows();
+  }
+  RemoveRecord(){
+    //closeModal('RemoveConfirmationModal');
+    if (this.idToRemove) {
+      this.service.DeleteRecord(this.idToRemove).subscribe(
+        data => {
+          this.idToRemove = '';
+          showMessage("Categoria Eliminada Correctamente.!!");
+          this.fillRecords();
+          closeModal('RemoveConfirmationModal');
+          //this.router.navigate(['/parameters/category-list']);
+        },
+        error => {
+          showMessage("There os an error with backend communication");
+        }
+      ); 
+    }
   }
 
 }
