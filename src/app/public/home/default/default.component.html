@@ -1,3 +1,4 @@
-<h1>
-    WELCOME TO MY ONLINE STORE
-</h1>
+<app-hero></app-hero>
+<div *ngIf="isLogged">
+  <app-product-list-home></app-product-list-home>
+</div>

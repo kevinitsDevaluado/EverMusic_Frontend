@@ -6,8 +6,8 @@ import { ProductModel } from 'src/app/models/products/product.model';
 import { ProductService } from 'src/app/services/products/product.service';
 
 declare const showMessage: any;
-declare const showRemoveConfirmationWindows: any;
-declare const closeModal: any;
+declare const showRemoveConfirmationWindow: any;
+declare const closeAllModal: any;
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
@@ -28,6 +28,7 @@ export class ProductListComponent implements OnInit {
     //this.spinner.show();
     console.log('algo pasa loquitos');
     this.fillRecords();
+    this.spinner.show();
   }
 
   fillRecords() {
@@ -35,10 +36,10 @@ export class ProductListComponent implements OnInit {
       (data) => {
         this.recordList = data;
         console.log(this.recordList);
-        // setTimeout(() => {
-        //   /** spinner ends after 5 seconds */
-        //   this.spinner.hide();
-        // }, 500);
+        setTimeout(() => {
+          /** spinner ends after 5 seconds */
+          this.spinner.hide();
+        }, 500);
       },
       (error) => {
         showMessage('There os an error with backend communication');
@@ -47,18 +48,17 @@ export class ProductListComponent implements OnInit {
   }
   RemoveConfirmation(id) {
     this.idToRemove = id;
-    showRemoveConfirmationWindows();
+    showRemoveConfirmationWindow();
   }
   RemoveRecord() {
-    //closeModal('RemoveConfirmationModal');
     if (this.idToRemove) {
       this.service.DeleteRecord(this.idToRemove).subscribe(
         (data) => {
           this.idToRemove = '';
           showMessage('Producto Eliminado Correctamente.!!');
           this.fillRecords();
-          closeModal('RemoveConfirmationModal');
-          //this.router.navigate(['/parameters/product-list']);
+          closeAllModal('RemoveConfirmationModal');
+          this.router.navigate(['/parameters/product-list']);
         },
         (error) => {
           showMessage('There os an error with backend communication');

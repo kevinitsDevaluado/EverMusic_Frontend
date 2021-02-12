@@ -1,21 +1,4 @@
-function showMessage(message) {
-  //alert(message);
-  document.querySelector("#messageText").innerHTML = message;
-  let elem = document.querySelector('#messageModal');
-  let instance = M.Modal.init(elem, {});
-  instance.open();
-  
-}
-//alert("Que onda malditos");
 
-function showRemoveConfirmationWindows(message) {
-  //alert(message);
-  
-  let elem = document.querySelector('#RemoveConfirmationModal');
-  let instance = M.Modal.init(elem, {});
-  instance.open();
-  
-}
 function showMessageB(message) {
   //alert(message);
  
@@ -25,9 +8,27 @@ function showMessageB(message) {
   
 }
 
-function closeModal() {
-  let elem = document.querySelectorAll('.modal');
+function showMessage(message) {
+  //alert(message);
+  document.querySelector("#messageText").innerHTML = message;
+  let elem = document.querySelector('#messageModal');
   let instance = M.Modal.init(elem, {});
-  instance.close();
-  
+  instance.open();
 }
+
+function showRemoveConfirmationWindow(message) {
+  //alert(message);
+  let elem = document.querySelector('#removeConfirmationModal');
+  let instance = M.Modal.init(elem, {});
+  instance.open();
+}
+
+
+
+function closeAllModal() {
+  let elem = document.querySelectorAll('.modal');
+  let instances = M.Modal.init(elem, {});
+  instances.close();
+}
+
+//alert('Hi');

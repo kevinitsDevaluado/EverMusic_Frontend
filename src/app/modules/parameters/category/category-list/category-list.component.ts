@@ -7,8 +7,8 @@ import { CategoryModel } from 'src/app/models/parameters/categori.model';
 import { CategoryService } from 'src/app/services/parameters/category.service';
 
 declare const showMessage: any;
-declare const showRemoveConfirmationWindows: any;
-declare const closeModal: any;
+declare const showRemoveConfirmationWindow: any;
+declare const closeAllModal: any;
 @Component({
   selector: 'app-category-list',
   templateUrl: './category-list.component.html',
@@ -52,7 +52,7 @@ export class CategoryListComponent implements OnInit {
   }
   RemoveConfirmation(id){
     this.idToRemove = id;
-    showRemoveConfirmationWindows();
+    showRemoveConfirmationWindow();
   }
   RemoveRecord(){
     //closeModal('RemoveConfirmationModal');
@@ -62,8 +62,8 @@ export class CategoryListComponent implements OnInit {
           this.idToRemove = '';
           showMessage("Categoria Eliminada Correctamente.!!");
           this.fillRecords();
-          closeModal('RemoveConfirmationModal');
-          //this.router.navigate(['/parameters/category-list']);
+          closeAllModal('RemoveConfirmationModal');
+          this.router.navigate(['/parameters/category-list']);
         },
         error => {
           showMessage("There os an error with backend communication");

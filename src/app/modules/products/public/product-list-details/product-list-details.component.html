@@ -1,1 +1,63 @@
-<p>product-list-details works!</p>
+
+<div class="container"  id="imprimirCompra">
+  
+  <div class="row">    
+    <figure class="icon-cards mt-3 align-items-center" style="margin-left:400px">
+      <div class="icon-cards__content ">
+        <div *ngFor="let i of imagesList" class="icon-cards__item d-flex align-items-center justify-content-center"><img
+          class="materialboxed"
+          data-caption="A picture of a way with a group of trees in a park"
+          width="380px"
+          height="250px"
+          src="http://localhost:3000/files/2/{{ i.id }}"
+        /></div>
+      </div>
+    </figure>
+  </div>
+  <div class="card" >
+    <table style="background:black">
+      <thead style="color:white">
+        <tr>
+          <td style="text-align: center"> <strong>Nombre</strong></td>
+          <td style="text-align: center"> <strong>Precio</strong> </td>
+          <td style="text-align: center"> <strong>Categoría</strong> </td>
+          <td style="text-align: center"> <strong>Marca</strong></td>
+        </tr>
+      </thead>
+      <tbody style="color:white">
+        <tr>
+          <td style="text-align: center">
+            {{ productDetails.name }} 
+          </td>
+          <td style="text-align: center">
+            $ {{ productDetails.price }}
+          </td>
+          <td style="text-align: center">
+            {{ productDetails.category.name }}
+          </td>
+          <td style="text-align: center">
+            {{ productDetails.brand.name }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+   
+  </div>
+  <div style="text-align: right">
+    <button class="btn  waves-effect waves-light" type="button" (click)="saveItemSale()" style="text-align: center;background-color:#EC7900">
+      COMPRAR
+      <i class="material-icons left">add_shopping_cart</i>
+    </button>
+    
+  </div>
+  
+</div>
+
+<script>
+  function classToggle() {
+  var el = document.querySelector('.icon-cards__content');
+  el.classList.toggle('step-animation');
+  } 
+
+  document.querySelector('#toggle-animation').addEventListener('click', classToggle);
+</script>

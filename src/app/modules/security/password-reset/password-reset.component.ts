@@ -47,14 +47,14 @@ export class PasswordResetComponent implements OnInit {
       showMessage('Invalid form');
     }else{
       let model = this.getPasswordData();
+      let a = 1;
       this.service.PasswordReset(model).subscribe(
         data => {
           console.log(data);
           //this.service.saveSessionData(data);
           //sometingh else
           //initSidenav();
-          
-          if (parseInt(this.fgv.type.value) == 1) {
+          if (parseInt(this.fgv.type.value) == a) {
             showMessage("Tu contraseña a sido cambiada con exito!! se ha enviado a su Teléfono móvil Gracias por Preferirnos");            
           }else{
             showMessage("Tu contraseña a sido cambiada con exito!! se ha enviado a su Correo Electrónico móvil Gracias por Preferirnos");            

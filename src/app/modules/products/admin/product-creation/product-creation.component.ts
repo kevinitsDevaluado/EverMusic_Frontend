@@ -5,6 +5,7 @@ import { FormsConfig } from 'src/app/config/forms-config';
 import { BrandModel } from 'src/app/models/parameters/brand.model';
 import { CategoryModel } from 'src/app/models/parameters/categori.model';
 import { ProductModel } from 'src/app/models/products/product.model';
+import { ProductModelCombinadas } from 'src/app/models/products/product.modelcombinada';
 import { BrandService } from 'src/app/services/parameters/brand.service';
 import { CategoryService } from 'src/app/services/parameters/category.service';
 import { ProductService } from 'src/app/services/products/product.service';
@@ -85,7 +86,8 @@ export class ProductCreationComponent implements OnInit {
       let model = this.getCustomerData();
       this.service.saveNewRecord(model).subscribe(
         data => {
-          showMessage('Categoria registrada Correctamente.!!');
+          console.log(data);
+          showMessage('Producto registrada Correctamente.!!');
           this.router.navigate(['/products/product-list']);
         },
         error => {
@@ -95,8 +97,8 @@ export class ProductCreationComponent implements OnInit {
     }
   }
 
-  getCustomerData(): ProductModel{
-    let model = new ProductModel();
+  getCustomerData(): ProductModelCombinadas{
+    let model = new ProductModelCombinadas();
     model.code = this.fgv.code.value;
     model.name = this.fgv.name.value;
     model.price = parseInt(this.fgv.price.value);

@@ -6,20 +6,16 @@ import { PasswordResetModel } from '../models/security/password-reset.model';
 import { UserModel } from '../models/security/user.models';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SecurityService {
+  userData = new BehaviorSubject<UserModel>(new UserModel());
 
-  userData = new BehaviorSubject<UserModel>(new UserModel);
-
-  constructor(
-    private http: HttpClient
-  ) { 
+  constructor(private http: HttpClient) {
     this.verifyCurrentSession();
   }
-  
-  
-  verifyCurrentSession(){
+
+  verifyCurrentSession() {
     let currentSession = this.getSessionData();
     if (currentSession) {
       this.setUserData(JSON.parse(currentSession));
@@ -29,63 +25,64 @@ export class SecurityService {
    * Method to update user data
    * @param user user data
    */
-  setUserData(user: UserModel){
+  setUserData(user: UserModel) {
     this.userData.next(user);
   }
   /**
    * get user data status
    */
-  getUserData(){
+  getUserData() {
     return this.userData.asObservable();
   }
   /**
-   * 
+   *
    * @param customer METODO PARA ENVIAR LOS DATOS A NUESTRO SERVIDOR
    */
   LoginCustomer(user: UserModel): Observable<UserModel> {
-    return this.http.post<any>(`login`,user,{
-      headers : new HttpHeaders({})
-  });
+    return this.http.post<any>(`login`, user, {
+      headers: new HttpHeaders({}),
+    });
   }
   /**
-   * 
+   *
    * @param user RESETEAR LA CONTRASEÑA
    */
   PasswordReset(data: PasswordResetModel): Observable<UserModel> {
-    return this.http.post<any>(`password-reset`,data,{
-      headers : new HttpHeaders({})
-  });
+    return this.http.post<any>(`password-reset`, data, {
+      headers: new HttpHeaders({}),
+    });
   }
   /**
-   * 
+   *
    * @param data CAMBIAR LA CONTRASEÑA
    * @returns
    */
   ChangePassword(data: ChangePasswordModel): Observable<UserModel> {
-    return this.http.post<any>(`change-password`,data,{
-      headers : new HttpHeaders({
-        Authorization:`Bearer ${this.getToken()}`
-      })
-  });
+    return this.http.post<any>(`change-password`, data, {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.getToken()}`,
+      }),
+    });
   }
   /**
    * save session
-   * @param sessionData user data and token 
+   * @param sessionData user data and token
    */
-  saveSessionData(sessionData : any): Boolean {
+  saveSessionData(sessionData: any): Boolean {
     let currentSession = localStorage.getItem('session');
-    if (currentSession){
+    if (currentSession) {
       return false;
-    }else{
-      let data : UserModel = {
-        id : sessionData.data.id,
-        customerId : sessionData.data.customerId,
-        username : sessionData.data.username,
-        role : sessionData.data.role,
-        token : sessionData.token,
+    } else {
+      let data: UserModel = {
+        id: sessionData.data.id,
+        customerId: sessionData.data.customerId,
+        username: sessionData.data.username,
+        role: sessionData.data.role,
+        token: sessionData.token,
         isLogged: true,
+        cartId: sessionData.data.cartId,
       };
-      localStorage.setItem('session',JSON.stringify(data));
+      localStorage.setItem('session', JSON.stringify(data));
       this.setUserData(data);
       console.log(data);
       return true;
@@ -94,35 +91,47 @@ export class SecurityService {
   /**
    * Return the current session data
    */
-  getSessionData(){
+  getSessionData() {
     let currentSession = localStorage.getItem('session');
     return currentSession as any;
   }
 
-  sessionExist(): Boolean{
+  sessionExist(): Boolean {
     let currentSession = this.getSessionData();
-    return (currentSession) ? true : false;
-    
+    return currentSession ? true : false;
   }
 
   VerifyRoleInSession(roleId): Boolean {
     let currentSession = JSON.parse(this.getSessionData());
-    return (currentSession.role == roleId);
+    return currentSession.role == roleId;
   }
 
-  getToken():String{
-     let currentSession = JSON.parse(this.getSessionData());
-     return currentSession.token;
+  getToken(): String {
+    let sessionData = this.getSessionData();
+    let currentSession = '';
+
+    if (sessionData) {
+      currentSession = JSON.parse(sessionData).token;
+    }
+    return currentSession;
   }
-  getUserId():String{
+  getUserId(): String {
     let currentSession = JSON.parse(this.getSessionData());
     return currentSession.id;
- }
+  }
+  getCartId(): String {
+    let currentSession = JSON.parse(this.getSessionData());
+    return currentSession.cartId;
+  }
+  getCardId(): String {
+    let currentSession = JSON.parse(this.getSessionData());
+    return currentSession.cartId;
+  }
   /**
    * Close session // cerrar sesion
    */
-  logout(){
-    localStorage.removeItem('session');   
+  logout() {
+    localStorage.removeItem('session');
     this.setUserData(new UserModel());
   }
 }

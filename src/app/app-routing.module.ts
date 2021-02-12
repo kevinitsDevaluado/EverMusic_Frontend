@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AppComponent } from './app.component';
 import { AdminAuthenticatedGuard } from './guards/admin-authenticated.guard';
 import { DefaultComponent } from './public/home/default/default.component';
 
@@ -10,7 +11,6 @@ const routes: Routes = [
     path : 'home',
     component: DefaultComponent
   },
-
   { 
     path : '',
     pathMatch: 'full',
@@ -31,7 +31,7 @@ const routes: Routes = [
   {
     path: 'products',
     loadChildren: () => import('./modules/products/products.module').then(m => m.ProductsModule),
-    canActivate: [AdminAuthenticatedGuard]
+    
   },
   { 
     path : 'customer',

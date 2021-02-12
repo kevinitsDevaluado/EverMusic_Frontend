@@ -1,0 +1,107 @@
+<div *ngIf="isLogged">
+  <div class="container" *ngIf="imagesList">
+    <p class="card-title" style="font-size:20px; color: white"> <strong> Nota: </strong>El precio y otros detalles pueden variar según el tamaño y el color.</p>
+    
+      <div *ngFor="let i of imagesList">
+        <div class="row">
+          <div class="col-md-6">
+          <div class="card" style="background:black;">
+            <div class="card-image">
+              <img
+                src="http://localhost:3000/files/2/{{ i.images[0]?.id }}"
+                class="productImage"
+                style="width: 450px; height: 450px; margin-left:40px; margin-top:40px;"
+              />
+              
+            </div>
+            <div class="card-content">
+              <button
+                class="btn waves-effect waves-light"
+                type="button"
+                (click)="OpenDetails(i.id)" 
+                name="action"
+                style="color: white; background-color:#EC7900"
+              >
+    
+                Details
+                <i class="material-icons right">pageview</i>
+              </button>
+            </div>
+          </div>
+        </div>
+       
+        <div class="col-md-6">
+          <div class="card" style="background:black;">
+            <span class="card-title order" style="text-align: center; font-family: Arial, Helvetica, sans-serif;"> <h1 style="color: #EC7900;">{{ i.name }}</h1></span>
+            <div class="card-content">
+              <div>
+                <h5 style="color: white;"> <strong style="color: #EC7900">Marca: </strong> {{ i.brand.name }}</h5>
+                <h5 style="color: white;"> <strong style="color: #EC7900">Precio: </strong> US$ {{ i.price }}</h5>
+              </div>
+              <div>
+                <h5> <strong style="color: #EC7900">Descripción:</strong></h5>
+                <pre style="background:black; color:white;">{{ i.description }}</pre> 
+              </div>
+            </div>
+          </div> 
+        </div>
+      </div>
+      
+    </div>
+  
+  </div>  
+</div>
+<div *ngIf="!isLogged">
+  <div class="container" *ngIf="imagesList">
+    <p class="card-title" style="font-size:20px; color: white"> <strong> Nota: </strong>El precio y otros detalles pueden variar según el tamaño y el color.</p>
+    
+      <div *ngFor="let i of imagesList">
+        <div class="row">
+          <div class="col-md-6">
+          <div class="card" style="background:black;">
+            <div class="card-image">
+              <img
+                src="http://localhost:3000/files/2/{{ i.images[0]?.id }}"
+                class="productImage"
+                style="width: 450px; height: 450px; margin-left:40px; margin-top:40px;"
+              />
+              
+            </div>
+            <div class="card-content">
+              <button
+                class="btn waves-effect waves-light"
+                type="button"
+                (click)="OpenRegister()" 
+                name="action"
+                style="color: white; background-color:#EC7900"
+              >
+    
+                Details
+                <i class="material-icons right">pageview</i>
+              </button>
+            </div>
+          </div>
+        </div>
+       
+        <div class="col-md-6">
+          <div class="card" style="background:black;">
+            <span class="card-title order" style="text-align: center; font-family: Arial, Helvetica, sans-serif;"> <h1 style="color: #EC7900;">{{ i.name }}</h1></span>
+            <div class="card-content">
+              <div>
+                <h5 style="color: white;"> <strong style="color: #EC7900">Marca: </strong> {{ i.brand.name }}</h5>
+                <h5 style="color: white;"> <strong style="color: #EC7900">Precio: </strong> US$ {{ i.price }}</h5>
+              </div>
+              <div>
+                <h5> <strong style="color: #EC7900">Descripción:</strong></h5>
+                <pre style="background:black; color:white;">{{ i.description }}</pre> 
+              </div>
+            </div>
+          </div> 
+        </div>
+      </div>
+      
+    </div>
+  
+  </div>  
+</div>
+  

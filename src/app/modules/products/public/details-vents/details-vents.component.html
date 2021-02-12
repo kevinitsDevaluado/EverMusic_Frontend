@@ -1,0 +1,75 @@
+<div class="container" style="background-color: white">
+  <div class="row" id="imprimirCompra">
+    <div class="col-xs-6">
+      <h1>
+        <a href=" "
+          ><img
+            src="https://secureservercdn.net/198.71.233.199/n1y.0a5.myftpupload.com/wp-content/uploads/2020/03/cropped-EM-logo-169x78.png"
+            alt=""
+            height="80px"
+            width="150px"
+            style="margin-left: 130px; margin-top: 10px"
+          />
+        </a>
+      </h1>
+    </div>
+    <div class="col-xs-6 text-right">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4>
+            NIT :
+            <a href="#">N&uacute;mero de NIT</a>
+          </h4>
+          <h4>
+            AUTORIZACI&Oacute;N :
+            <a href="#">N&uacute;mero de Aut.</a>
+          </h4>
+        </div>
+        <div class="panel-body">
+          <h4>
+            FACTURA :
+            <a href="#">N&uacute;mero de FACTURA</a>
+          </h4>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align: center">
+      <h1>FACTURA</h1>
+    </div>
+
+    <div>
+      <h3>La Paz, 30 de abril de 2014</h3>
+      <h3>Comprador :</h3>
+    </div>
+
+    <!---->
+    <div class="row">
+      <div class="col-xs-4">
+        <h1>
+          <a href=" "><img alt="" src="assets/img/factura/qr.png" /></a>
+        </h1>
+      </div>
+      <div class="col-xs-8">
+        <div class="panel panel-info" style="text-align: right">
+          <h6>
+            "LA ALTERACI&Oacute;N, FALSIFICACI&Oacute;N O
+            COMERCIALIZACI&Oacute;N ILEGAL DE ESTE DOCUMENTO ESTA PENADO POR LA
+            LEY"
+          </h6>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <button
+      class="btn waves-effect waves-light"
+      type="button"
+      (click)="downloadPDF()"
+      style="text-align: center; background-color: #ec7900"
+    >
+      IMPRIMIR
+    </button>
+  </div>
+</div>

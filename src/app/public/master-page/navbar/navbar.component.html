@@ -1,18 +1,28 @@
-<nav>
-    <div class="nav-wrapper black">
-      <a href="#" class="brand-logo"> Everlasting Music</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li *ngIf="!isLogged"><a routerLink="/parameters/category-list">Category</a></li>
-        <li *ngIf="!isLogged"><a routerLink="/parameters/brand-list">Brand</a></li>
-        <li *ngIf="isLogged"><a routerLink="/security/logout">Logout</a></li>
-        <li *ngIf="isLogged"><a routerLink="/security/change-password">Change Password</a></li>
-        <li *ngIf="!isLogged"><a routerLink="/customer/register">Register</a></li>
-        <li *ngIf="!isLogged"><a routerLink="/security/login">Login</a></li>
-
-
-
+<nav style="height: 120px;">
+    <div class="nav-wrapper white">
+      
+      <a href=""><img src="https://secureservercdn.net/198.71.233.199/n1y.0a5.myftpupload.com/wp-content/uploads/2020/03/cropped-EM-logo-169x78.png" alt="" height="80px" width="150px" style="margin-left: 130px; margin-top:10px;"></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down" style="margin-top:20px;">
         
+        <li class="nav-item dropdown">
+          <a  class="dropdown-toggle"  href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: black">
+            Productos
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="dropdown-item" routerLink="/products/product-category-cuerda">Cuerda</a></li>
+            <li><a class="dropdown-item" routerLink="/products/product-category-viento">Viento</a></li>
+            <li><a class="dropdown-item" routerLink="/products/product-category-persecusion">Persecusión</a></li>
+            <li><a class="dropdown-item" routerLink="/products/product-category-instrumentos-electricos">Instrumentos Eléctricos</a></li>
 
+           
+          </ul>
+        </li>
+        <li *ngIf="!isLogged"><a routerLink="/products/services-employes" style="color: black">Servicios</a></li>
+        <li *ngIf="isLogged"><a routerLink="/security/change-password" style="color: black">Cambiar Contraseña</a></li>
+        <li *ngIf="isLogged"><a routerLink="/security/logout" style="color: black"> Cerrar Sesión</a></li>
+        <li *ngIf="!isLogged"><a routerLink="/customer/register" style="color: black">Registrate</a></li>
+        <li *ngIf="!isLogged"><a routerLink="/security/login" style="color: black">Iniciar Sesión</a></li>
+        <li *ngIf="isLogged"><a routerLink="/products/dowload-shopping" style="color: black"><i class="fa fa-shopping-bag" aria-hidden="true"></i></a></li>
       </ul>
     </div>
 </nav>

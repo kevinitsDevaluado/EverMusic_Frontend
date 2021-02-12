@@ -1,1 +1,80 @@
-<p>product-images works!</p>
+<div class="container">
+  <fieldset>
+    <legend>Imagenes de los Productos</legend>
+    <div class="row">
+      <form [formGroup]="fgValidator">
+        <div class="row">
+          <div class="col s6 m6">
+            <div class="file-field input-field">
+              <div class="btn">
+                <span>Imagen</span>
+                <input type="file" (change)="onFileSelect($event)" />
+              </div>
+              <div class="file-path-wrapper">
+                <input class="file-path validate" type="text" />
+              </div>
+            </div>
+            <input type="hidden" formControlName="path" />
+          </div>
+          <div class="input-field col s3">
+            <input formControlName="order" id="order" type="number" />
+            <label for="order">Order</label>
+          </div>
+          <div class="input-field col s3">
+            <button
+              class="btn waves-effect waves-light"
+              (click)="UploadImageFn()"
+              type="button"
+              name="action"
+            >
+              Guardar
+              <i class="material-icons right">send</i>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="row">
+      <div *ngFor="let i of imagesList" class="col s4 m6">
+        <div class="card">
+          <div class="card-image">
+            <img
+              src="http://localhost:3000/files/2/{{ i.id }}"
+              class="productImage"
+            />
+            <span class="card-title order">Order: {{ i.order }}</span>
+          </div>
+          <div class="card-content">
+            <button
+              class="btn waves-effect waves-light"
+              (click)="RemoveConfirmation(i.id)"
+              type="button"
+              name="action"
+            >
+              Eliminar
+              <i class="material-icons right">delete</i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+
+  <div id="removeConfirmationModal" class="modal">
+    <div class="modal-content">
+      <h4>Remove Confirmation</h4>
+      <p>Are you sure remove this record?</p>
+    </div>
+    <div class="modal-footer">
+      <button
+        (click)="RemoveImage()"
+        class="btn red waves-effect waves-light"
+        type="button"
+      >
+        Confirm
+        <i class="material-icons left">delete</i>
+      </button>
+      <a class="modal-close waves-effect waves-green btn-flat">Close</a>
+    </div>
+  </div>
+</div>

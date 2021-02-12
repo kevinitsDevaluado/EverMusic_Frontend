@@ -7,8 +7,8 @@ import { BrandModel } from 'src/app/models/parameters/brand.model';
 import { BrandService } from 'src/app/services/parameters/brand.service';
 
 declare const showMessage: any;
-declare const showRemoveConfirmationWindows: any;
-declare const closeModal: any;
+declare const showRemoveConfirmationWindow: any;
+declare const closeAllModal: any;
 @Component({
   selector: 'app-brand-list',
   templateUrl: './brand-list.component.html',
@@ -52,7 +52,7 @@ export class BrandListComponent implements OnInit {
   }
   RemoveConfirmation(id){
     this.idToRemove = id;
-    showRemoveConfirmationWindows();
+    showRemoveConfirmationWindow();
   }
   RemoveRecord(){
     //closeModal('RemoveConfirmationModal');
@@ -60,10 +60,10 @@ export class BrandListComponent implements OnInit {
       this.service.DeleteRecord(this.idToRemove).subscribe(
         data => {
           this.idToRemove = '';
-          showMessage("Categoria Eliminada Correctamente.!!");
+          showMessage("Marca Eliminada Correctamente.!!");
           this.fillRecords();
-          closeModal('RemoveConfirmationModal');
-          //this.router.navigate(['/parameters/brand-list']);
+          closeAllModal('RemoveConfirmationModal');
+          this.router.navigate(['/parameters/brand-list']);
         },
         error => {
           showMessage("There os an error with backend communication");

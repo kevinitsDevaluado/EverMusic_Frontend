@@ -48,7 +48,7 @@ export class BrandCreationComponent implements OnInit {
       let model = this.getCustomerData();
       this.service.saveNewRecord(model).subscribe(
         data => {
-          showMessage('Categoria registrada Correctamente.!!');
+          showMessage('Marca registrada Correctamente.!!');
           this.router.navigate(['/parameters/brand-list']);
         },
         error => {

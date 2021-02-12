@@ -10,6 +10,10 @@ import { HeroComponent } from './public/master-page/hero/hero.component';
 import { FooterComponent } from './public/master-page/footer/footer.component';
 import {HttpClientModule} from '@angular/common/http';
 import { ProductsModule } from './modules/products/products.module';
+import { ProductListHomeComponent } from './modules/products/public/product-list-home/product-list-home.component';
+import { CommonModule } from '@angular/common';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { DatePipe } from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -24,8 +28,8 @@ import { ProductsModule } from './modules/products/products.module';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ProductsModule
-  
+    ProductsModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

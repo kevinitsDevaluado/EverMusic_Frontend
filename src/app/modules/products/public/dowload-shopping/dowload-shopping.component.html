@@ -1,0 +1,94 @@
+<div class="container" style="background-color:white">
+    <a
+      class="btn btn-success"
+      id="agregar"
+      routerLink="/products/product-creation"
+      ><i class="fa fa-plus-square-o fa-6" aria-hidden="true"></i> Nuevo Producto</a
+    >
+  
+    <table class="table margin" id="imprimirCompra">
+      <thead class="table-dark">
+        <tr>
+          <td style="width: 10%; text-align: center">ID</td>
+          <td style="width: 20%; text-align: center">Nombre del Producto</td>
+          <td style="width: 15%; text-align: center">Fecha</td>
+          <td style="width: 15%; text-align: center">Precio</td>
+          <td style="width: 15%; text-align: center">Cantidad</td>
+          <td style="width: 10%; text-align: center">Total</td>
+          <td style="width: 20%; text-align: center">Opciones</td>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="
+            let r of record
+              | paginate: { itemsPerPage: itemCount, currentPage: page }
+          "
+        >
+          <td style="text-align: center">
+            {{ r.id }}
+          </td>
+          <td style="text-align: center">
+            {{ r.product.name }}
+          </td>
+          <td style="text-align: center">
+            {{ r.addedDate }}
+          </td>
+          <td style="text-align: center">
+            $ {{ r.price }}
+          </td>
+          <td style="text-align: center">
+            {{ r.amount }}
+          </td>
+          <td style="text-align: center">
+            $ {{ r.price }}
+          </td>
+          
+          
+          <td style="text-align: center">
+         
+            <button
+            routerLink="/products/details-vents/{{ r.id }}"
+              type="button"
+              class="btn btn-success"
+              id="botones"
+            >
+            <i class="fa fa-file-image-o" aria-hidden="true"></i
+              >
+            </button>
+            <a
+              type="button"
+              class="btn btn-info"
+              id="botones"
+              routerLink="/products/product-edition/{{ r.id }}"
+              ><i class="fa fa-pencil-square-o" aria-hidden="true"></i
+            ></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="botonesPagination">
+      <pagination-controls (pageChange)="page = $event"></pagination-controls>
+      <ngx-spinner></ngx-spinner>
+    </div>
+    <!-- Modal Structure -->
+    <div id="removeConfirmationModal" class="modal">
+      <div class="modal-content">
+        <h4>Remove Confirmation</h4>
+        <p>Are you sure remove this record?</p>
+      </div>
+      <div class="modal-footer">
+        <button
+          
+          class="btn red waves-effect waves-light"
+          type="button"
+        >
+          Confirm
+          <i class="material-icons left">delete</i>
+        </button>
+        <a class="modal-close waves-effect waves-green btn-flat">Close</a>
+      </div>
+    </div>
+  </div>
+    

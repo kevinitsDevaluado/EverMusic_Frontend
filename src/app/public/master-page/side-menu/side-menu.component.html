@@ -1,23 +1,60 @@
-  <ul id="slide-out" class="sidenav" >
-    <li><div class="user-view">
+<ul id="slide-out" class="sidenav">
+  <li>
+    <div class="user-view">
       <div class="background">
-        <img style="width: 350px; height: 200px;" src="https://i.pinimg.com/originals/7f/40/b1/7f40b1c8fa8a6089c89b243ab472c6c6.jpg">
+        <img
+          style="width: 350px; height: 200px"
+          src="https://i.pinimg.com/originals/7f/40/b1/7f40b1c8fa8a6089c89b243ab472c6c6.jpg"
+        />
       </div>
-      <a href="#user"><img class="circle" src="https://d2halst20r4hcy.cloudfront.net/assets2/028/560/158/976/normal/IMG_9931795045385.jpg"></a>
+      <a href="#user"
+        ><img
+          class="circle"
+          src="https://d2halst20r4hcy.cloudfront.net/assets2/028/560/158/976/normal/IMG_9931795045385.jpg"
+      /></a>
       <a href="#name"><span class="white-text name">John Doe</span></a>
-      <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
+      <a href="#email"
+        ><span class="white-text email">jdandturk@gmail.com</span></a
+      >
     </div>
-    <a routerLink="/security/edit-profile"><span class="black-text email">Edit Profile</span></a>
+    <a routerLink="/security/edit-profile"
+      ><span class="black-text email">Editar Perfil</span></a
+    >
     <div class="divider"></div>
   </li>
-    <!--MENU SLIDER DE MI TIENDA-->
-    <li><a *ngIf="isLogged && role == 2" class="subheader">Parameters</a></li>
-    <li *ngIf="isLogged && role == 2"><div class="divider"></div></li>
-    <li><a *ngIf="isLogged && role == 2" class="waves-effect" href="/parameters/category-list">Category</a></li>
-    <li><a *ngIf="isLogged && role == 2" class="waves-effect" href="/parameters/brand-list">Brand</a></li>
-    <li><a *ngIf="isLogged && role == 2" class="waves-effect" href="/products/product-list">Products</a></li>
-    
-
-
-  </ul>
-  <a href="#" data-target="slide-out" class="sidenav-trigger" *ngIf="isLogged"><i class="material-icons">menu</i></a>
+  <!--MENU SLIDER DE MI TIENDA-->
+  <li><a *ngIf="isLogged && role == 2" class="subheader">Parameters</a></li>
+  <li *ngIf="isLogged && role == 2"><div class="divider"></div></li>
+  <li>
+    <a
+      *ngIf="isLogged && role == 2"
+      class="waves-effect"
+      href="/parameters/category-list"
+      >Categoría</a
+    >
+  </li>
+  <li>
+    <a
+      *ngIf="isLogged && role == 2"
+      class="waves-effect"
+      href="/parameters/brand-list"
+      >Marcas</a
+    >
+  </li>
+  <li>
+    <a
+      *ngIf="isLogged && role == 2"
+      class="waves-effect"
+      href="/products/product-list"
+      >Productos</a
+    >
+  </li>
+</ul>
+<a
+  href="#"
+  data-target="slide-out"
+  class="sidenav-trigger"
+  *ngIf="isLogged"
+  style="color: white"
+  ><i class="material-icons">menu</i>Todo</a
+>
